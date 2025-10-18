@@ -5,9 +5,10 @@ interface ModalProps {
   isOpen: boolean
   onClose: () => void
   title: string
+  headerAction?: React.ReactNode
 }
 
-export default function Modal({ children, isOpen, onClose, title }: ModalProps) {
+export default function Modal({ children, isOpen, onClose, title, headerAction }: ModalProps) {
   if (!isOpen) return null;
 
   return (
@@ -16,16 +17,17 @@ export default function Modal({ children, isOpen, onClose, title }: ModalProps) 
       onClick={onClose}
     >
       <div
-        className="bg-neutral-800 rounded-xl shadow-2xl p-6 max-h-[90vh] max-w-[95vh] overflow-y-auto"
+        className="bg-neutral-500 rounded-xl shadow-2xl p-6 max-h-[90vh] max-w-[95vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between items-center border-b border-neutral-900 pb-3 mb-4">
+        <div className="flex justify-between items-center border-b border-neutral-300 pb-3 mb-4">
           <h3
             id="modal-title"
             className="text-2xl font-semibold text-white"
           >
             {title}
           </h3>
+          {headerAction}
           <button
             onClick={onClose}
             className="p-1 rounded-full text-neutral-300 hover:text-neutral-900 hover:bg-neutral-700 transition-colors"

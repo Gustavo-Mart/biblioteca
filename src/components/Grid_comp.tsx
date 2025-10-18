@@ -11,9 +11,11 @@ type Book = {
 
 interface GridProps {
   onCardClick: (bookDetails: BookDetails) => void;
+  onToggleFavorite: (bookId: number) => void; // NOVO
+  favoriteIds: Set<number>
 }
 
-function Grid({ onCardClick }: GridProps) {
+function Grid({ onCardClick, onToggleFavorite, favoriteIds }: GridProps) {
 
   const books: Book[] = [
     {
@@ -111,6 +113,8 @@ function Grid({ onCardClick }: GridProps) {
             key={book.id}
             book={book}
             onClick={() => onCardClick(book)}
+            isFavorite={favoriteIds.has(book.id)} // Calcula o status
+            onToggleFavorite={() => onToggleFavorite(book.id)} // Passa a função
           />
         ))}
       </div>
