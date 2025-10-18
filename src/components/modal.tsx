@@ -23,7 +23,7 @@ export default function Modal({ children, isOpen, onClose, title, headerAction }
         <div className="flex justify-between items-center border-b border-neutral-300 pb-3 mb-4 gap-2">
           <h3
             id="modal-title"
-            className="text-2xl sm:text-xl font-semibold text-white"
+            className="text-2xl sm:text-lg font-semibold text-white"
           >
             {title}
           </h3>
