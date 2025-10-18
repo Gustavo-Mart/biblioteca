@@ -18,7 +18,7 @@ export default function Card({ book, onClick }: CardProps) {
       <img
         src={book.imageUrl}
         alt={`Capa do Livro: ${book.title}`}
-        className="w-full h-full rounded-xl"
+        className="w-full rounded-xl"
       />
       <p className="p-2 text-neutral-950 font-semibold">{book.title}</p>
     </button>
