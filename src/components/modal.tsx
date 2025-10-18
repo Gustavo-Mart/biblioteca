@@ -17,7 +17,7 @@ export default function Modal({ children, isOpen, onClose, title, headerAction }
       onClick={onClose}
     >
       <div
-        className="bg-neutral-500 rounded-xl shadow-2xl p-6 max-h-[90vh] max-w-[95vh] overflow-y-auto"
+        className="bg-neutral-500 rounded-xl shadow-2xl p-6 max-h-[90vh] max-w-[95vh] m-5 overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center border-b border-neutral-300 pb-3 mb-4">

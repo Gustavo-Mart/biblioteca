@@ -84,7 +84,7 @@ function App() {
               <img
                 src={selectedBook.imageUrl}
                 alt={`Capa do Livro: ${selectedBook.title}`}
-                className="lg:max-w-64 md:max-w-48 sm:max-w-32 rounded-xl"
+                className="lg:max-w-64 sm:max-w-24 w-full rounded-xl"
               />
               <div className="">
                 <p className='text-neutral-200 mb-2'>Autor: {selectedBook.author}</p>
