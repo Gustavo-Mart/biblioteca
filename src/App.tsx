@@ -5,33 +5,27 @@ import Input from './components/input';
 import Modal from './components/modal';
 import { useState } from 'react';
 
-// 1. Definição da Interface (Deve ser a mesma usada em Grid_comp/Card)
 export interface BookDetails {
   id: number;
   title: string;
   author: string;
   imageUrl: string;
   description: string;
-  // Adicione outras propriedades do seu livro aqui
 }
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedBook, setSelectedBook] = useState<BookDetails | null>(null)
 
-  // 2. Tipagem do Estado: O estado deve ser BookDetails ou null
-  const [selectedBook, setSelectedBook] = useState<BookDetails | null>(null);
-
-  // 3. Tipagem da Função: openModal espera um objeto BookDetails
-  // Esta função corresponde ao que Grid_comp.tsx precisa (onCardClick)
   const openModal = (bookDetails: BookDetails) => {
-    setSelectedBook(bookDetails);
-    setIsModalOpen(true);
-  };
+    setSelectedBook(bookDetails)
+    setIsModalOpen(true)
+  }
 
   const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedBook(null);
-  };
+    setIsModalOpen(false)
+    setSelectedBook(null)
+  }
 
   return (
     <>
@@ -53,7 +47,7 @@ function App() {
               <img
                 src={selectedBook.imageUrl}
                 alt={`Capa do Livro: ${selectedBook.title}`}
-                className="w-64 rounded-xl"
+                className="lg:max-w-64 md:max-w-48 sm:max-w-32 rounded-xl"
               />
               <div className="">
                 <p className='text-neutral-200 mb-2'>Autor: {selectedBook.author}</p>
