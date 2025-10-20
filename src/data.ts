@@ -1,20 +1,10 @@
-import Card from './Card'
-import type { BookDetails } from '../types'
-import { BOOKS_DATA } from "../data.ts" 
+import type { BookDetails } from './types';
 
-interface GridProps {
-  onCardClick: (bookDetails: BookDetails) => void
-  onToggleFavorite: (bookId: number) => void
-  favoriteIds: Set<number>
-}
-
-function Grid({ onCardClick, onToggleFavorite, favoriteIds }: GridProps) {
-
-  const books: BookDetails[] = [
+export const BOOKS_DATA: BookDetails[] = [
     {
       id: 1,
       title: 'Design de Interação - Além da Interação Humano-Computador',
-      author: 'Autor Desconhecido', // Preencha o Autor/Descrição se tiver
+      author: 'Autor Desconhecido',
       imageUrl: "/assets/design_interacao.png",
       description: 'Estudo aprofundado sobre os princípios e práticas de design de interação, essencial para projetar sistemas intuitivos.',
     },
@@ -96,23 +86,3 @@ function Grid({ onCardClick, onToggleFavorite, favoriteIds }: GridProps) {
       description: 'Os pilares da linguagem Python focados em aplicações de análise e ciência de dados.',
     },
   ]
-
-  return (
-    <div className="w-full h-fit bg-neutral-300/10 rounded-2xl p-6">
-      <h2 className='text-3xl'>Resultados: </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6">
-        {BOOKS_DATA.map(book => (
-          <Card
-            key={book.id}
-            book={book}
-            onClick={() => onCardClick(book)}
-            isFavorite={favoriteIds.has(book.id)} // Calcula o status
-            onToggleFavorite={() => onToggleFavorite(book.id)} // Passa a função
-          />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-export default Grid;
