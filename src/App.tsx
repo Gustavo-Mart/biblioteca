@@ -1,23 +1,21 @@
 import './App.css'
 import Menu_lat from './components/Menu_lat'
-import Grid_comp from './components/Grid_comp'
-import Input from './components/input'
 import Modal from './components/modal'
-import { useState, useCallback } from 'react'
+import SearchTab from './components/SearchTab'
+import FavoriteTab from './components/FavoriteTab'
+import { useState, useCallback, useMemo } from 'react'
 import { Heart } from 'lucide-react'
 
-export interface BookDetails {
-  id: number
-  title: string
-  author: string
-  imageUrl: string
-  description: string
-}
+import { BOOKS_DATA } from './data'
+import type { BookDetails, View, GridControlProps, ModalProps } from './types'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedBook, setSelectedBook] = useState<BookDetails | null>(null)
   const [favoriteBookIds, setFavoriteBookIds] = useState<Set<number>>(new Set())
+  const [currentView, setCurrentView] = useState<View>('Home')
+
+  const handleChangeView = (view: View) => setCurrentView(view)
 
   const openModal = (bookDetails: BookDetails) => {
     setSelectedBook(bookDetails)
@@ -33,23 +31,46 @@ function App() {
     setFavoriteBookIds(prevIds => {
       const newIds = new Set(prevIds)
       if (newIds.has(bookId)) {
-        newIds.delete(bookId) // Remove se já estiver lá
+        newIds.delete(bookId)
       } else {
-        newIds.add(bookId)   // Adiciona se não estiver
+        newIds.add(bookId)
       }
       return newIds
     })
   }, [])
+
+  const displayedBooks = useMemo(() => {
+    if (currentView === 'Favorites') {
+      return BOOKS_DATA.filter(book => favoriteBookIds.has(book.id))
+    }
+    return BOOKS_DATA
+  }, [currentView, favoriteBookIds])
+
+  // 1. CRIANDO OS OBJETOS DE PROPS SEPARADAMENTE
+
+  // Objeto de Props do Modal (usado para injetar nas Tabs)
+  const modalProps: ModalProps = {
+    isModalOpen,
+    selectedBook,
+    closeModal,
+  }
+
+  // Objeto de Props de Controle (usado para injetar nas Tabs)
+  const gridControlProps: GridControlProps = {
+    onCardClick: openModal,
+    onToggleFavorite: handleToggleFavorite,
+    favoriteIds: favoriteBookIds,
+  }
+
   const isSelectedBookFavorite = selectedBook ? favoriteBookIds.has(selectedBook.id) : false
 
   const favoriteButton = selectedBook ? (
     <button
-      // Usa a função de toggle com o ID do livro selecionado
       onClick={() => handleToggleFavorite(selectedBook.id)}
       className={`
-        flex items-center p-2 rounded-lg font-medium transition-all
-        ${isSelectedBookFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-gray-700 hover:bg-red-500'}
-      `}
+                flex items-center p-2 rounded-lg font-medium transition-all
+                ${isSelectedBookFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-gray-700 hover:bg-red-500'}
+            `}
       aria-label={isSelectedBookFavorite ? "Remover Favorito" : "Favoritar Livro"}
     >
       <Heart
@@ -63,37 +84,52 @@ function App() {
     </button>
   ) : null
 
+
   return (
     <>
       <div className='flex font-nunito bg-blue-950 w-screen h-screen'>
-        <Menu_lat />
-        <div className="flex-grow flow-root justify-items-center space-y-4 p-10 pl-26 overflow-y-auto">
-          <h1 className='text-white text-4xl font-bold'>Biblioteca</h1>
-          <Input />
-          <Grid_comp onCardClick={openModal} onToggleFavorite={handleToggleFavorite} // NOVO: Função para o Card
-            favoriteIds={favoriteBookIds}/>
+        <Menu_lat
+          onViewChange={handleChangeView}
+          currentView={currentView}
+        />
+
+        <div className="flex-grow flow-root p-10 pl-16 overflow-y-auto">
+          {currentView === 'Home' ? (
+            <SearchTab
+              books={BOOKS_DATA}
+              {...gridControlProps}
+              {...modalProps}
+            />
+          ) : (
+            <FavoriteTab
+              books={displayedBooks}
+              {...gridControlProps}
+              {...modalProps}
+            />
+          )}
         </div>
 
         <Modal
           isOpen={isModalOpen}
           onClose={closeModal}
           title={selectedBook ? selectedBook.title : "Detalhes do Livro"}
+          headerAction={favoriteButton}
         >
           {selectedBook && (
             <div className='text-white flex space-x-6'>
               <img
                 src={selectedBook.imageUrl}
                 alt={`Capa do Livro: ${selectedBook.title}`}
-                className="lg:max-w-64 sm:max-w-24 w-full rounded-xl"
+                className="lg:max-w-64 sm:max-w-24 w-full rounded-xl object-cover"
               />
-              <div className="">
+              <div className="flex flex-col">
                 <p className='text-neutral-200 mb-2'>Autor: {selectedBook.author}</p>
                 <p className='text-neutral-300'>{selectedBook.description}</p>
               </div>
             </div>
           )}
-          <div className="mt-4 flex justify-end gap-2">
-            {favoriteButton}
+
+          <div className="mt-4 flex justify-end">
             <button
               onClick={closeModal}
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
@@ -107,4 +143,4 @@ function App() {
   )
 }
 
-export default App;
+export default App
