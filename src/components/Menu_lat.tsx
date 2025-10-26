@@ -24,7 +24,7 @@ export default function Menu_lat({ onViewChange }: MenuLatProps) {
       <button
         onClick={() => onViewChange(view)}
         className={`
-                    flex items-center text-slate-950 hover:bg-neutral-400 w-full rounded-xl
+                    flex items-center text-slate-950 hover:bg-neutral-400 w-full rounded-xl bg-neutral-300
                     ${focusedStyle}
                 `}
       >
