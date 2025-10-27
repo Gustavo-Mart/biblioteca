@@ -1,6 +1,5 @@
-
 import Grid from './Grid'
-import type{ BookDetails } from '../types'
+import type { BookDetails } from '../types'
 
 interface TabProps {
   books: BookDetails[]

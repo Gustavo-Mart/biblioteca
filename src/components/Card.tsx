@@ -18,15 +18,15 @@ export default function Card({ book, onClick, isFavorite, onToggleFavorite }: Ca
   return (
     <div
       onClick={() => onClick(book)}
-      className="bg-neutral-400 rounded-2xl p-2 h-full w-full cursor-pointer 
-                       transition-all hover:ring-4 ring-blue-500/50 transform hover:scale-[1.02] 
+      className="bg-neutral-400 rounded-2xl h-full w-full cursor-pointer 
+                       transition-all hover:ring-4 ring-blue-500/50 transform hover:scale-[1.02] overflow-clip 
                        relative group"
     >
       <div className="relative">
         <img
           src={book.imageUrl}
           alt={`Capa do Livro: ${book.title}`}
-          className="w-full rounded-xl object-cover"
+          className="w-full object-cover"
         />
 
         <button
@@ -46,7 +46,7 @@ export default function Card({ book, onClick, isFavorite, onToggleFavorite }: Ca
         </button>
       </div>
 
-      <p className="p-2 text-neutral-950 font-semibold">{book.title}</p>
+      <p className="py-2 px-4 text-neutral-950 font-semibold text-lg break-words">{book.title}</p>
     </div>
   )
 }

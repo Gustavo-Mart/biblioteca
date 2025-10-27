@@ -1,5 +1,5 @@
 import Grid from './Grid'
-import Input from './input'
+import Input from './Input'
 import type { BookDetails, GridControlProps, ModalProps } from '../types'
 
 interface FavoriteTabProps extends GridControlProps, ModalProps {

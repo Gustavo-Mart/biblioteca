@@ -1,6 +1,6 @@
 import './App.css'
 import Menu_lat from './components/Menu_lat'
-import Modal from './components/modal'
+import Modal from './components/Modal'
 import SearchTab from './components/SearchTab'
 import FavoriteTab from './components/FavoriteTab'
 import { useState, useCallback, useMemo } from 'react'
@@ -8,6 +8,7 @@ import { Heart } from 'lucide-react'
 
 import { BOOKS_DATA } from './data'
 import type { BookDetails, View, GridControlProps, ModalProps } from './types'
+import AccountTab from './components/AccountTab'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -46,16 +47,12 @@ function App() {
     return BOOKS_DATA
   }, [currentView, favoriteBookIds])
 
-  // 1. CRIANDO OS OBJETOS DE PROPS SEPARADAMENTE
-
-  // Objeto de Props do Modal (usado para injetar nas Tabs)
   const modalProps: ModalProps = {
     isModalOpen,
     selectedBook,
     closeModal,
   }
 
-  // Objeto de Props de Controle (usado para injetar nas Tabs)
   const gridControlProps: GridControlProps = {
     onCardClick: openModal,
     onToggleFavorite: handleToggleFavorite,
@@ -69,7 +66,7 @@ function App() {
       onClick={() => handleToggleFavorite(selectedBook.id)}
       className={`
                 flex items-center p-2 rounded-lg font-medium transition-all
-                ${isSelectedBookFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-gray-700 hover:bg-red-500'}
+                ${isSelectedBookFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-neutral-700 hover:bg-red-500'}
             `}
       aria-label={isSelectedBookFavorite ? "Remover Favorito" : "Favoritar Livro"}
     >
@@ -78,7 +75,7 @@ function App() {
         fill={isSelectedBookFavorite ? 'white' : 'currentColor'}
         stroke="white"
       />
-      <span className="text-white text-sm">
+      <span className="text-white text-md">
         {isSelectedBookFavorite ? 'Favoritado' : 'Favoritar'}
       </span>
     </button>
@@ -100,12 +97,14 @@ function App() {
               {...gridControlProps}
               {...modalProps}
             />
-          ) : (
+          ) : currentView === 'Favorites' ? (
             <FavoriteTab
               books={displayedBooks}
               {...gridControlProps}
               {...modalProps}
             />
+          ) : (
+            <AccountTab/>
           )}
         </div>
 
@@ -113,7 +112,6 @@ function App() {
           isOpen={isModalOpen}
           onClose={closeModal}
           title={selectedBook ? selectedBook.title : "Detalhes do Livro"}
-          headerAction={favoriteButton}
         >
           {selectedBook && (
             <div className='text-white flex space-x-6'>
@@ -129,7 +127,8 @@ function App() {
             </div>
           )}
 
-          <div className="mt-4 flex justify-end">
+          <div className=" gap-2 mt-4 flex justify-end">
+            {favoriteButton}
             <button
               onClick={closeModal}
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"

@@ -2,9 +2,7 @@ import { SquareStar, Menu, User, Home, type LucideIcon } from "lucide-react"
 import { useState } from "react"
 import type { View } from '../types'
 
-// 1. Interface de Propriedades do Menu_lat
 interface MenuLatProps {
-  // 2. O TypeScript agora sabe exatamente o que a função recebe
   onViewChange: (view: View) => void
   currentView: View
 }
@@ -23,10 +21,10 @@ export default function Menu_lat({ onViewChange }: MenuLatProps) {
     return (
       <button
         onClick={() => onViewChange(view)}
-        className={`
-                    flex items-center text-slate-950 hover:bg-neutral-400 w-full rounded-xl bg-neutral-300
-                    ${focusedStyle}
-                `}
+        className=
+        {`
+          flex items-center text-slate-950 hover:bg-neutral-400 w-full rounded-xl bg-neutral-300 ${focusedStyle}
+        `}
       >
         <Icon className="size-13 p-1.5 cursor-pointer flex-shrink-0" strokeWidth={1} />
         {isMenuOpen && <span className='p-2 text-xl font-semibold whitespace-nowrap'>{text}</span>}
@@ -37,9 +35,8 @@ export default function Menu_lat({ onViewChange }: MenuLatProps) {
   return (
     <div
       className={`
-                fixed top-0 left-0 h-screen bg-neutral-200 flex-shrink-0 z-10 py-6 px-2 space-y-2 
-                transition-all duration-300
-                ${isMenuOpen ? 'w-64' : 'w-fit'}
+                fixed top-0 left-0 h-screen bg-neutral-200 flex-shrink-0 z-99 py-6 px-2 space-y-2 
+                transition-all duration-300 ease-in-out ${isMenuOpen ? 'w-64' : 'w-17'}
              `}
     >
       <button
@@ -56,7 +53,7 @@ export default function Menu_lat({ onViewChange }: MenuLatProps) {
       <div className="space-y-2 pt-4">
         <NavButton Icon={Home} text="Biblioteca" view="Home" />
         <NavButton Icon={SquareStar} text="Favoritos" view="Favorites" />
-        <NavButton Icon={User} text="Conta" view="Favorites" />
+        <NavButton Icon={User} text="Conta" view="Account"/>
       </div>
     </div>
   )

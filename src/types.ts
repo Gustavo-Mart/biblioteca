@@ -1,5 +1,3 @@
-// src/types.ts
-
 export interface BookDetails {
   id: number;
   title: string;
@@ -8,7 +6,7 @@ export interface BookDetails {
   description: string;
 }
 
-export type View = 'Home' | 'Favorites'
+export type View = 'Home' | 'Favorites' | 'Account'
 
 export interface GridControlProps {
     onCardClick: (bookDetails: BookDetails) => void;
@@ -16,7 +14,6 @@ export interface GridControlProps {
     favoriteIds: Set<number>;
 }
 
-// 2. Definição da interface completa do Modal Props (para o App.tsx)
 export interface ModalProps {
     isModalOpen: boolean;
     selectedBook: BookDetails | null;
