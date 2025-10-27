@@ -4,7 +4,7 @@ import type { BookDetails, GridControlProps, ModalProps } from '../types'
 
 interface TabProps extends GridControlProps, ModalProps {
   books: BookDetails[]
-}
+} 
 
 export default function SearchTab(props: TabProps) {
   const gridProps = {
