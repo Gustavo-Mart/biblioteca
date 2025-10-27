@@ -1,20 +1,20 @@
 import './App.css'
-import Menu_lat from './components/Menu_lat'
+import Menu_lat from './components/SideMenu'
 import Modal from './components/Modal'
 import SearchTab from './components/SearchTab'
 import FavoriteTab from './components/FavoriteTab'
+import AccountTab from './components/AccountTab'
 import { useState, useCallback, useMemo } from 'react'
 import { Heart } from 'lucide-react'
-
 import { BOOKS_DATA } from './data'
 import type { BookDetails, View, GridControlProps, ModalProps } from './types'
-import AccountTab from './components/AccountTab'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedBook, setSelectedBook] = useState<BookDetails | null>(null)
   const [favoriteBookIds, setFavoriteBookIds] = useState<Set<number>>(new Set())
   const [currentView, setCurrentView] = useState<View>('Home')
+  const [reservedBooks, setReservedBooks] = useState<Map<number, Date>>(new Map())
 
   const handleChangeView = (view: View) => setCurrentView(view)
 
@@ -23,10 +23,10 @@ function App() {
     setIsModalOpen(true)
   }
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsModalOpen(false)
     setSelectedBook(null)
-  }
+  }, [])
 
   const handleToggleFavorite = useCallback((bookId: number) => {
     setFavoriteBookIds(prevIds => {
@@ -39,6 +39,21 @@ function App() {
       return newIds
     })
   }, [])
+
+  const handleReserveBook = useCallback((bookId: number) => {
+    setReservedBooks(prevReservations => {
+      const newReservations = new Map(prevReservations)
+      if (!newReservations.has(bookId)) {
+        const returnDate = new Date()
+        returnDate.setDate(returnDate.getDate() + 7)
+        newReservations.set(bookId, returnDate)
+        closeModal()
+      } else {
+        alert("Este livro já está reservado")
+      }
+      return newReservations
+    })
+  }, [closeModal])
 
   const displayedBooks = useMemo(() => {
     if (currentView === 'Favorites') {
@@ -60,6 +75,7 @@ function App() {
   }
 
   const isSelectedBookFavorite = selectedBook ? favoriteBookIds.has(selectedBook.id) : false
+  const isSelectedBookReserved = selectedBook ? reservedBooks.has(selectedBook.id) : false
 
   const favoriteButton = selectedBook ? (
     <button
@@ -80,6 +96,17 @@ function App() {
       </span>
     </button>
   ) : null
+
+  const reservedBookDetails = useMemo(() => {
+    const details: (BookDetails & { returnDate: Date })[] = []
+    reservedBooks.forEach((returnDate, bookId) => {
+      const book = BOOKS_DATA.find(b => b.id === bookId)
+      if (book) {
+        details.push({ ...book, returnDate })
+      }
+    })
+    return details
+  }, [reservedBooks])
 
 
   return (
@@ -104,7 +131,9 @@ function App() {
               {...modalProps}
             />
           ) : (
-            <AccountTab/>
+            <AccountTab
+              reservedBooks={reservedBookDetails}
+            />
           )}
         </div>
 
@@ -114,20 +143,33 @@ function App() {
           title={selectedBook ? selectedBook.title : "Detalhes do Livro"}
         >
           {selectedBook && (
-            <div className='text-white flex space-x-6'>
+            <div className='text-white flex flex-row space-y-4 space-x-6'>
               <img
                 src={selectedBook.imageUrl}
                 alt={`Capa do Livro: ${selectedBook.title}`}
-                className="lg:max-w-64 sm:max-w-24 w-full rounded-xl object-cover"
+                className="w-48 md:w-full rounded-xl object-cover self-start"
               />
-              <div className="flex flex-col">
+              <div className="flex flex-col flex-grow">
                 <p className='text-neutral-200 mb-2'>Autor: {selectedBook.author}</p>
-                <p className='text-neutral-300'>{selectedBook.description}</p>
+                <p className='text-neutral-300 flex-grow'>{selectedBook.description}</p>
               </div>
             </div>
           )}
 
-          <div className=" gap-2 mt-4 flex justify-end">
+          <div className=" gap-2 mt-6 flex justify-end items-center border-t border-neutral-600 pt-4">
+            {selectedBook && !isSelectedBookReserved && (
+              <button
+                onClick={() => handleReserveBook(selectedBook.id)}
+                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+              >
+                Reservar por 1 semana
+              </button>
+            )}
+            {selectedBook && isSelectedBookReserved && (
+              <span className="text-yellow-400 text-sm italic mr-4">
+                Reservado até: {reservedBooks.get(selectedBook.id)?.toLocaleDateString()}
+              </span>
+            )}
             {favoriteButton}
             <button
               onClick={closeModal}

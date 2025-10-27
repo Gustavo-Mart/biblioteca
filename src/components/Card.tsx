@@ -11,15 +11,15 @@ interface CardProps {
 export default function Card({ book, onClick, isFavorite, onToggleFavorite }: CardProps) {
 
   const handleHeartClick = (e: React.MouseEvent) => {
-    e.stopPropagation() 
+    e.stopPropagation()
     onToggleFavorite()
   }
 
   return (
     <div
       onClick={() => onClick(book)}
-      className="bg-neutral-400 rounded-2xl h-full w-full cursor-pointer 
-                       transition-all hover:ring-4 ring-blue-500/50 transform hover:scale-[1.02] overflow-clip 
+      className="bg-neutral-400 rounded-2xl h-full w-full cursor-pointer
+                       transition-all hover:ring-4 ring-blue-500/50 transform hover:scale-[1.02] overflow-clip
                        relative group"
     >
       <div className="relative">
@@ -32,7 +32,7 @@ export default function Card({ book, onClick, isFavorite, onToggleFavorite }: Ca
         <button
           onClick={handleHeartClick}
           className={`
-                        absolute top-3 right-3 p-2 rounded-full z-10 
+                        absolute top-3 right-3 p-2 rounded-full z-10
                         transition-opacity duration-300
                         ${isFavorite ? 'opacity-100 bg-white/70' : 'opacity-0 group-hover:opacity-100 bg-white/50'}
                     `}

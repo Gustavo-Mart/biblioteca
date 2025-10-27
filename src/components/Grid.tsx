@@ -1,5 +1,6 @@
 import type { BookDetails, GridControlProps } from '../types'
 import Card from "./Card"
+
 interface GridProps extends GridControlProps {
   books: BookDetails[]
 }
@@ -27,10 +28,10 @@ export default function Grid({
         ))}
         {books.length === 0 && (
           <p className="col-span-5 text-neutral-400 text-center py-10">
-            Nenhum livro para exibir.
+            Nenhum livro para exibir
           </p>
         )}
       </div>
     </div>
-  );
+  )
 }
