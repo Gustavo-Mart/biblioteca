@@ -1,6 +1,5 @@
 import './App.css'
 import Menu_lat from './components/SideMenu'
-import Modal from './components/Modal'
 import SearchTab from './components/SearchTab'
 import FavoriteTab from './components/FavoriteTab'
 import AccountTab from './components/AccountTab'
@@ -8,6 +7,7 @@ import { useState, useCallback, useMemo } from 'react'
 import { Heart } from 'lucide-react'
 import { BOOKS_DATA } from './data'
 import type { BookDetails, View, GridControlProps, ModalProps } from './types'
+import Modal from './components/Modal'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
