@@ -7,7 +7,8 @@ import AccountTab from './components/AccountTab'
 import { useState, useCallback, useMemo } from 'react'
 import { Heart } from 'lucide-react'
 import { BOOKS_DATA } from './data'
-import type { BookDetails, View, GridControlProps, ModalProps } from './types'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { BookDetails, View, GridControlProps, ModalProps, ReservationDetails } from './types'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
