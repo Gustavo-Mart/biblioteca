@@ -81,7 +81,7 @@ function App() {
     <button
       onClick={() => handleToggleFavorite(selectedBook.id)}
       className={`
-                flex items-center p-2 rounded-lg font-medium transition-all
+                flex justify-center p-2 rounded-lg font-medium transition-all w-full mb-2
                 ${isSelectedBookFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-neutral-700 hover:bg-red-500'}
             `}
       aria-label={isSelectedBookFavorite ? "Remover Favorito" : "Favoritar Livro"}
@@ -147,7 +147,7 @@ function App() {
               <img
                 src={selectedBook.imageUrl}
                 alt={`Capa do Livro: ${selectedBook.title}`}
-                className="w-48 md:w-full rounded-xl object-cover self-start"
+                className="w-36 md:w-full rounded-xl object-cover self-start"
               />
               <div className="flex flex-col flex-grow">
                 <p className='text-neutral-200 mb-2'>Autor: {selectedBook.author}</p>
@@ -156,11 +156,11 @@ function App() {
             </div>
           )}
 
-          <div className=" gap-2 mt-6 flex justify-end items-center border-t border-neutral-600 pt-4">
+          <div className=" gap-2 mt-6 block md:flex md:justify-end items-center border-t border-neutral-600 pt-4">
             {selectedBook && !isSelectedBookReserved && (
               <button
                 onClick={() => handleReserveBook(selectedBook.id)}
-                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition w-full mb-2"
               >
                 Reservar por 1 semana
               </button>
@@ -173,7 +173,7 @@ function App() {
             {favoriteButton}
             <button
               onClick={closeModal}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition w-full"
             >
               Fechar
             </button>
