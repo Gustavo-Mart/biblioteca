@@ -1,6 +1,6 @@
 import Grid from './Grid'
 import type { BookDetails, GridControlProps, ModalProps } from '../types'
-import Input_Biblioteca from './Input'
+import Input_Biblioteca from './ui/Input'
 
 
 interface TabProps extends GridControlProps, ModalProps {

@@ -1,5 +1,5 @@
 import type { BookDetails, GridControlProps } from '../types'
-import Card from "./Card"
+import Card from "./ui/Card"
 
 interface GridProps extends GridControlProps {
   books: BookDetails[]

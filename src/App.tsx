@@ -7,7 +7,7 @@ import { useState, useCallback, useMemo } from 'react'
 import { Heart } from 'lucide-react'
 import { BOOKS_DATA } from './data'
 import type { BookDetails, View, GridControlProps, ModalProps } from './types'
-import Modal_Comp from './components/Modal'
+import Modal_Comp from './components/ui/Modal'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
