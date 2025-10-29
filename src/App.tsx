@@ -7,7 +7,7 @@ import { useState, useCallback, useMemo } from 'react'
 import { Heart } from 'lucide-react'
 import { BOOKS_DATA } from './data'
 import type { BookDetails, View, GridControlProps, ModalProps } from './types'
-import Modal from './components/Modal'
+import Modal_Comp from './components/Modal'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -137,7 +137,7 @@ function App() {
           )}
         </div>
 
-        <Modal
+        <Modal_Comp
           isOpen={isModalOpen}
           onClose={closeModal}
           title={selectedBook ? selectedBook.title : "Detalhes do Livro"}
@@ -178,7 +178,7 @@ function App() {
               Fechar
             </button>
           </div>
-        </Modal>
+        </Modal_Comp>
       </div>
     </>
   )

@@ -9,7 +9,7 @@ interface ModalProps {
   headerAction?: React.ReactNode
 }
 
-export default function Modal({ children, isOpen, onClose, title, headerAction }: ModalProps) {
+export default function Modal_Comp({ children, isOpen, onClose, title, headerAction }: ModalProps) {
   if (!isOpen) return null
 
   return (

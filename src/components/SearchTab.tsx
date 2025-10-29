@@ -1,6 +1,6 @@
 import Grid from './Grid'
 import type { BookDetails, GridControlProps, ModalProps } from '../types'
-import Input from './Input'
+import Input_Biblioteca from './Input'
 
 
 interface TabProps extends GridControlProps, ModalProps {
@@ -18,7 +18,7 @@ export default function SearchTab(props: TabProps) {
     <>
       <div className="pl-10 space-y-4">
         <h1 className='text-white text-4xl font-bold'>Biblioteca</h1>
-        <Input />
+        <Input_Biblioteca />
         <Grid {...gridProps} />
       </div>
     </>
