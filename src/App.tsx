@@ -81,7 +81,7 @@ function App() {
     <button
       onClick={() => handleToggleFavorite(selectedBook.id)}
       className={`
-                flex justify-center p-2 rounded-lg font-medium transition-all w-full mb-2
+                flex justify-center p-2 rounded-lg font-medium transition-all w-full 
                 ${isSelectedBookFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-neutral-700 hover:bg-red-500'}
             `}
       aria-label={isSelectedBookFavorite ? "Remover Favorito" : "Favoritar Livro"}
@@ -143,11 +143,11 @@ function App() {
           title={selectedBook ? selectedBook.title : "Detalhes do Livro"}
         >
           {selectedBook && (
-            <div className='text-white flex flex-row space-y-4 space-x-6'>
+            <div className='text-white flex flex-row space-x-6 px-4'>
               <img
                 src={selectedBook.imageUrl}
                 alt={`Capa do Livro: ${selectedBook.title}`}
-                className="w-36 md:w-full rounded-xl object-cover self-start"
+                className="w-32 md:w-full rounded-xl object-cover self-start"
               />
               <div className="flex flex-col flex-grow">
                 <p className='text-neutral-200 mb-2'>Autor: {selectedBook.author}</p>
@@ -156,11 +156,11 @@ function App() {
             </div>
           )}
 
-          <div className=" gap-2 mt-6 block md:flex md:justify-end items-center border-t border-neutral-600 pt-4">
+          <div className=" justify-evenly gap-2 mt-4 flex flex-col md:flex-row md:justify-end items-center border-t border-neutral-600 p-4">
             {selectedBook && !isSelectedBookReserved && (
               <button
                 onClick={() => handleReserveBook(selectedBook.id)}
-                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition w-full mb-2"
+                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition h-full w-full"
               >
                 Reservar por 1 semana
               </button>
@@ -173,7 +173,7 @@ function App() {
             {favoriteButton}
             <button
               onClick={closeModal}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition w-full"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition w-full h-full"
             >
               Fechar
             </button>

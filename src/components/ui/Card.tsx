@@ -1,5 +1,6 @@
 import { Heart } from "lucide-react"
 import type { BookDetails } from "@/types"
+import { motion } from 'framer-motion' // Importar motion
 
 interface CardProps {
   book: BookDetails
@@ -16,10 +17,22 @@ export default function Card({ book, onClick, isFavorite, onToggleFavorite }: Ca
   }
 
   return (
-    <div
+    <motion.div
+      // Props de Animação (Entrada, Saída e Rearranjo)
+      layout // Anima o rearranjo
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.8 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+
+      // 1. Substitui 'hover:scale-[1.02]' do Tailwind
+      whileHover={{ scale: 1.02 }}
+
       onClick={() => onClick(book)}
+
+      // 2. Classes CSS (REMOVIDO: transition-all, transform, hover:scale-[1.02])
       className="bg-neutral-400 rounded-2xl h-full w-full cursor-pointer
-                       transition-all hover:ring-4 ring-blue-500/50 transform hover:scale-[1.02] overflow-clip
+                       hover:ring-4 ring-blue-500/50 overflow-clip 
                        relative group"
     >
       <div className="relative">
@@ -47,6 +60,6 @@ export default function Card({ book, onClick, isFavorite, onToggleFavorite }: Ca
       </div>
 
       <p className="py-2 px-4 text-neutral-950 font-semibold text-lg break-words">{book.title}</p>
-    </div>
+    </motion.div>
   )
 }

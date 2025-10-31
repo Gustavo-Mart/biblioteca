@@ -14,12 +14,12 @@ export default function AccountTab({ reservedBooks }: AccountTabProps) {
           {reservedBooks.length > 0 ? (
             <ul className="space-y-4">
               {reservedBooks.map(book => (
-                <li key={book.id} className="flex items-center space-x-4 p-3 bg-neutral-600/50 rounded-xl">
-                  <img src={book.imageUrl} alt={book.title} className="w-34 md:w-fit rounded-xl object-cover self-start"/>
-                  <div className="text-white">
-                    <p className="font-semibold md:text-2xl">{book.title}</p>
-                    <p className="text-sm md:text-xl text-neutral-300">Autor: {book.author}</p>
-                    <p className="text-sm md:text-lg text-yellow-400 mt-1">
+                <li key={book.id} className="sm:flex xs:items-center space-x-4 bg-neutral-600/50 rounded-xl overflow-hidden">
+                  <img src={book.imageUrl} alt={book.title} className="w-full sm:w-48 object-cover self-start"/>
+                  <div className="text-white p-2">
+                    <p className="font-semibold text-sm xs:text-2xl">{book.title}</p>
+                    <p className="text-xs xs:text-xl text-neutral-300 mt-1">Autor: {book.author}</p>
+                    <p className="text-sm xs:text-lg text-yellow-400 mt-0.5">
                       Devolver até: {book.returnDate.toLocaleDateString()}
                     </p>
                   </div>

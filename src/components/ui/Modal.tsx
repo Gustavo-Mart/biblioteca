@@ -21,7 +21,7 @@ export default function Modal_Comp({ children, isOpen, onClose, title, headerAct
       aria-labelledby="modal-title"
     >
       <div
-        className="bg-neutral-500 rounded-xl shadow-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto m-10"
+        className="bg-neutral-500 rounded-xl shadow-2xl p-4 max-w-2xl w-full max-h-[80vh] overflow-hidden m-10"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center border-b border-neutral-600 pb-3 mb-4">
