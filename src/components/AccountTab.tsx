@@ -12,10 +12,10 @@ export default function AccountTab({ reservedBooks }: AccountTabProps) {
         <div className="w-full h-fit bg-neutral-300/10 rounded-2xl p-6">
           <h2 className='text-white text-3xl mb-4'>Livros Reservados</h2>
           {reservedBooks.length > 0 ? (
-            <ul className="space-y-4">
+            <ul className=" xl:grid xl:grid-cols-2 gap-2 space-y-3">
               {reservedBooks.map(book => (
-                <li key={book.id} className="sm:flex xs:items-center space-x-4 bg-neutral-600/50 rounded-xl overflow-hidden">
-                  <img src={book.imageUrl} alt={book.title} className="w-full sm:w-48 object-cover self-start"/>
+                <li key={book.id} className="h-full sm:flex xs:items-center space-x-4 bg-neutral-300/20 rounded-xl overflow-hidden">
+                  <img src={book.imageUrl} alt={book.title} className="w-full h-full sm:w-48 object-cover self-start"/>
                   <div className="text-white p-2">
                     <p className="font-semibold text-sm xs:text-2xl">{book.title}</p>
                     <p className="text-xs xs:text-xl text-neutral-300 mt-1">Autor: {book.author}</p>

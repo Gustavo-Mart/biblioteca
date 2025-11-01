@@ -18,12 +18,10 @@ export default function Grid({
       <h2 className='text-white text-3xl'>Livros: </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6">
-
-        {/* 2. Envolver o map com AnimatePresence */}
         <AnimatePresence>
           {books.map(book => (
             <Card
-              key={book.id} // A key é essencial
+              key={book.id}
               book={book}
               onClick={onCardClick}
               isFavorite={favoriteIds.has(book.id)}
@@ -31,7 +29,7 @@ export default function Grid({
             />
           ))}
         </AnimatePresence>
-
+        
         {books.length === 0 && (
           <p className="col-span-5 text-neutral-400 text-center py-10">
             Nenhum livro para exibir
