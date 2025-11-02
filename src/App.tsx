@@ -3,18 +3,40 @@ import Menu_lat from './components/SideMenu'
 import SearchTab from './components/SearchTab'
 import FavoriteTab from './components/FavoriteTab'
 import AccountTab from './components/AccountTab'
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useCallback, useMemo, useEffect } from 'react'
 import { Heart } from 'lucide-react'
 import { BOOKS_DATA } from './data'
 import type { BookDetails, View, GridControlProps, ModalProps } from './types'
 import Modal_Comp from './components/ui/Modal'
 
 function App() {
+
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedBook, setSelectedBook] = useState<BookDetails | null>(null)
-  const [favoriteBookIds, setFavoriteBookIds] = useState<Set<number>>(new Set())
   const [currentView, setCurrentView] = useState<View>('Home')
-  const [reservedBooks, setReservedBooks] = useState<Map<number, Date>>(new Map())
+
+  const [favoriteBookIds, setFavoriteBookIds] = useState<Set<number>>(() => {
+    const stored = localStorage.getItem('favoriteBookIds')
+    return stored ? new Set(JSON.parse(stored) as number[]) : new Set()
+  })
+
+  const [reservedBooks, setReservedBooks] = useState<Map<number, Date>>(() => {
+    const stored = localStorage.getItem('reservedBooks')
+    if (stored) {
+      const parsed = JSON.parse(stored) as [number, string][]
+      return new Map(parsed.map(([id, dateStr]) => [id, new Date(dateStr)]))
+    }
+    return new Map()
+  })
+
+  useEffect(() => {
+    localStorage.setItem('favoriteBookIds', JSON.stringify(Array.from(favoriteBookIds)))
+  }, [favoriteBookIds])
+
+  useEffect(() => {
+    const storable = Array.from(reservedBooks.entries()).map(([id, date]) => [id, date.toISOString()])
+    localStorage.setItem('reservedBooks', JSON.stringify(storable))
+  }, [reservedBooks])
 
   const handleChangeView = (view: View) => setCurrentView(view)
 
@@ -54,6 +76,16 @@ function App() {
       return newReservations
     })
   }, [closeModal])
+
+  const handleRemoveReservation = useCallback((bookId: number) => {
+    setReservedBooks(prevReservations => {
+      const newReservations = new Map(prevReservations)
+      if (newReservations.has(bookId)) {
+        newReservations.delete(bookId)
+      }
+      return newReservations
+    })
+  }, [])
 
   const displayedBooks = useMemo(() => {
     if (currentView === 'Favorites') {
@@ -133,6 +165,7 @@ function App() {
           ) : (
             <AccountTab
               reservedBooks={reservedBookDetails}
+              onRemoveReservation={handleRemoveReservation}
             />
           )}
         </div>
@@ -166,9 +199,12 @@ function App() {
               </button>
             )}
             {selectedBook && isSelectedBookReserved && (
-              <span className="text-yellow-400 text-sm italic mr-4">
-                Reservado até: {reservedBooks.get(selectedBook.id)?.toLocaleDateString()}
-              </span>
+              <button
+                onClick={() => handleRemoveReservation(selectedBook.id)}
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition h-full w-full"
+              >
+                Devolver Reserva
+              </button>
             )}
             {favoriteButton}
             <button
