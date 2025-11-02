@@ -50,7 +50,7 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
         aria-label="Abrir menu"
       >
         <ArrowLeftFromLine className="size-8" strokeWidth={1.4} />
-        <span className="pl-1 text-md sm:text-lg">Abrir</span>
+        <span className="pl-1 text-md sm:text-lg">Abrir Menu</span>
       </button>
 
       {/* Overlay (Fundo Escuro) */}
