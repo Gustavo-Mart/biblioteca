@@ -9,8 +9,8 @@ interface AccountTabProps {
 export default function AccountTab({ reservedBooks, onRemoveReservation }: AccountTabProps) {
   return (
     <>
-      <div className="mt-2 space-y-6">
-        <p className='text-white text-4xl xs:text-6xl font-bold'>Reservas</p>        
+      <div className="mt-2 space-y-4">
+        <p className='text-white pt-2 text-4xl xs:text-6xl font-bold'>Reservas</p>        
         <div className="w-full h-fit bg-neutral-300/10 rounded-2xl p-6">
           <h2 className='text-white text-3xl mb-4'>Livros Reservados</h2>
           {reservedBooks.length > 0 ? (

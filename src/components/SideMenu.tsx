@@ -49,7 +49,7 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
         `}
         aria-label="Abrir menu"
       >
-        <ArrowLeftFromLine className="size-6 sm:size-8" strokeWidth={1.4} />
+        <ArrowLeftFromLine className="size-8" strokeWidth={1.4} />
         <span className="pl-1 text-md sm:text-lg">Abrir</span>
       </button>
 

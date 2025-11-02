@@ -31,8 +31,8 @@ export default function SearchTab(props: TabProps) {
 
   return (
     <>
-      <div className="mt-2 space-y-4">
-        <p className='text-white text-4xl xs:text-6xl font-bold'>Biblioteca</p>
+      <div className="mt-2 space-y-2">
+        <p className='text-white pt-2 text-4xl xs:text-6xl font-bold'>Biblioteca</p>
 
         <Input_Biblioteca
           value={searchTerm}
