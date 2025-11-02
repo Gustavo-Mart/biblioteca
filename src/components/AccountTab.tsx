@@ -17,7 +17,7 @@ export default function AccountTab({ reservedBooks, onRemoveReservation }: Accou
               {reservedBooks.map(book => (
                 <li key={book.id} className="h-full sm:flex space-x-2 bg-neutral-300/20 rounded-lg">
                   <div className='sm:flex sm:flex-row w-full'>
-                    <img src={book.imageUrl} alt={book.title} className=" w-full h-full rounded-tl-lg rounded-tr-lg sm:rounded-tl-lg sm:rounded-bl-lg sm:w-48 object-cover self-start"/>
+                    <img src={book.imageUrl} alt={book.title} className=" w-full h-full rounded-tl-lg rounded-tr-lg sm:rounded-tl-lg sm:rounded-bl-lg sm:rounded-tr-none sm:w-48 object-cover self-start"/>
                     <div className="text-white p-2 sm:flex sm:flex-col sm:justify-center flex-grow w-full">
                       <p className="font-semibold text-md xs:text-xl">{book.title}</p>
                       <p className="text-sm sm:text-md text-neutral-300 mt-0.5">Autor: {book.author}</p>
