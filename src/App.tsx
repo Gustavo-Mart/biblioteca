@@ -10,16 +10,12 @@ import type { BookDetails, View, GridControlProps, ModalProps } from './types'
 import Modal_Comp from './components/ui/Modal'
 
 function App() {
-
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedBook, setSelectedBook] = useState<BookDetails | null>(null)
-  const [currentView, setCurrentView] = useState<View>('Home')
-
   const [favoriteBookIds, setFavoriteBookIds] = useState<Set<number>>(() => {
     const stored = localStorage.getItem('favoriteBookIds')
     return stored ? new Set(JSON.parse(stored) as number[]) : new Set()
   })
-
   const [reservedBooks, setReservedBooks] = useState<Map<number, Date>>(() => {
     const stored = localStorage.getItem('reservedBooks')
     if (stored) {
@@ -37,6 +33,8 @@ function App() {
     const storable = Array.from(reservedBooks.entries()).map(([id, date]) => [id, date.toISOString()])
     localStorage.setItem('reservedBooks', JSON.stringify(storable))
   }, [reservedBooks])
+
+  const [currentView, setCurrentView] = useState<View>('Home')
 
   const handleChangeView = (view: View) => setCurrentView(view)
 
@@ -113,7 +111,7 @@ function App() {
     <button
       onClick={() => handleToggleFavorite(selectedBook.id)}
       className={`
-                flex justify-center p-2 rounded-lg font-medium transition-all w-full 
+                flex justify-center p-2 rounded-lg font-medium transition-all w-full
                 ${isSelectedBookFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-neutral-700 hover:bg-red-500'}
             `}
       aria-label={isSelectedBookFavorite ? "Remover Favorito" : "Favoritar Livro"}
@@ -149,7 +147,7 @@ function App() {
           currentView={currentView}
         />
 
-        <div className="flex-grow flow-root p-10 pl-16 overflow-y-auto">
+        <div className="flex-grow flow-root p-10 overflow-y-auto">
           {currentView === 'Home' ? (
             <SearchTab
               books={BOOKS_DATA}
@@ -199,12 +197,9 @@ function App() {
               </button>
             )}
             {selectedBook && isSelectedBookReserved && (
-              <button
-                onClick={() => handleRemoveReservation(selectedBook.id)}
-                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition h-full w-full"
-              >
-                Devolver Reserva
-              </button>
+              <span className="text-yellow-400 text-sm italic mr-4">
+                Reservado até: {reservedBooks.get(selectedBook.id)?.toLocaleDateString()}
+              </span>
             )}
             {favoriteButton}
             <button

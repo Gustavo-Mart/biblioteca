@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import type { BookDetails } from '../types'
 
 interface AccountTabProps {
@@ -8,14 +9,22 @@ interface AccountTabProps {
 export default function AccountTab({ reservedBooks, onRemoveReservation }: AccountTabProps) {
   return (
     <>
-      <div className="pl-10 space-y-6">
-        <h1 className='text-white text-4xl font-bold'>Minha Conta</h1>
+      <div className="space-y-6">
+        <h1 className='text-white text-4xl font-bold'>Minhas Reservas</h1>        
         <div className="w-full h-fit bg-neutral-300/10 rounded-2xl p-6">
           <h2 className='text-white text-3xl mb-4'>Livros Reservados</h2>
           {reservedBooks.length > 0 ? (
             <ul className="xl:grid xl:grid-cols-2 gap-2.5 space-y-3">
               {reservedBooks.map(book => (
-                <li key={book.id} className="h-full sm:flex space-x-2 bg-neutral-300/20 rounded-lg">
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }} 
+                  key={book.id}
+                  className="h-full sm:flex space-x-2 bg-neutral-300/20 rounded-lg"
+                >
                   <div className='sm:flex sm:flex-row w-full'>
                     <img src={book.imageUrl} alt={book.title} className=" w-full h-full rounded-tl-lg rounded-tr-lg sm:rounded-tl-lg sm:rounded-bl-lg sm:rounded-tr-none sm:w-48 object-cover self-start"/>
                     <div className="text-white p-2 sm:flex sm:flex-col sm:justify-center flex-grow w-full">
@@ -32,7 +41,7 @@ export default function AccountTab({ reservedBooks, onRemoveReservation }: Accou
                       Devolver Livro
                     </button>
                   </div>
-                </li>
+                </motion.div>
               ))}
             </ul>
           ) : (

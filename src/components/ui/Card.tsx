@@ -18,19 +18,14 @@ export default function Card({ book, onClick, isFavorite, onToggleFavorite }: Ca
 
   return (
     <motion.div
-      // Props de Animação (Entrada, Saída e Rearranjo)
-      layout // Anima o rearranjo
+      layout
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
-
-      // 1. Substitui 'hover:scale-[1.02]' do Tailwind
       whileHover={{ scale: 1.02 }}
 
       onClick={() => onClick(book)}
-
-      // 2. Classes CSS (REMOVIDO: transition-all, transform, hover:scale-[1.02])
       className="bg-neutral-400 rounded-2xl h-full w-full cursor-pointer
                        hover:ring-4 ring-blue-500/50 overflow-clip 
                        relative group"

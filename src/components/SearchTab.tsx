@@ -31,7 +31,7 @@ export default function SearchTab(props: TabProps) {
 
   return (
     <>
-      <div className="pl-10 space-y-4">
+      <div className="space-y-4">
         <h1 className='text-white text-4xl font-bold'>Biblioteca</h1>
 
         {/* 5. Conecta o Input ao estado */}
