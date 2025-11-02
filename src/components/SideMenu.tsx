@@ -1,4 +1,4 @@
-import { SquareStar, User, Home, type LucideIcon, X, ArrowLeftFromLine } from "lucide-react"
+import { SquareStar, Home, type LucideIcon, X, ArrowLeftFromLine, CalendarClock } from "lucide-react"
 import { useState } from "react"
 import type { View } from '../types'
 
@@ -40,7 +40,7 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
       <button
         onClick={toggleMenu}
         className={`
-          fixed top-10 right-6 z-50 p-2 flex flex-row items-center
+          fixed top-8 right-6 z-50 p-2 flex flex-row items-center
           bg-neutral-300 text-slate-950 rounded-2xl shadow-lg
           transition-all duration-300 ease-in-out
           hover:scale-105 hover:bg-neutral-400
@@ -49,8 +49,8 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
         `}
         aria-label="Abrir menu"
       >
-        <ArrowLeftFromLine className="size-8" strokeWidth={1.4} />
-        <span className="pl-1 text-lg">Abrir Menu</span>
+        <ArrowLeftFromLine className="size-6 sm:size-8" strokeWidth={1.4} />
+        <span className="pl-1 text-md sm:text-lg">Abrir</span>
       </button>
 
       {/* Overlay (Fundo Escuro) */}
@@ -85,7 +85,7 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
         <div className="space-y-2 pt-2">
           <NavButton Icon={Home} text="Biblioteca" view="Home" />
           <NavButton Icon={SquareStar} text="Favoritos" view="Favorites" />
-          <NavButton Icon={User} text="Conta" view="Account" />
+          <NavButton Icon={CalendarClock} text="Reservas" view="Account" />
         </div>
       </div>
     </>

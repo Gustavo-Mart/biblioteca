@@ -147,7 +147,7 @@ function App() {
           currentView={currentView}
         />
 
-        <div className="flex-grow flow-root p-10 overflow-y-auto">
+        <div className="flex-grow flow-root p-6 overflow-y-auto">
           {currentView === 'Home' ? (
             <SearchTab
               books={BOOKS_DATA}

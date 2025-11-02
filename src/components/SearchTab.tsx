@@ -31,16 +31,14 @@ export default function SearchTab(props: TabProps) {
 
   return (
     <>
-      <div className="space-y-4">
-        <h1 className='text-white text-4xl font-bold'>Biblioteca</h1>
+      <div className="mt-2 space-y-4">
+        <p className='text-white text-4xl xs:text-6xl font-bold'>Biblioteca</p>
 
-        {/* 5. Conecta o Input ao estado */}
         <Input_Biblioteca
           value={searchTerm}
           onChange={(e: { target: { value: SetStateAction<string> } }) => setSearchTerm(e.target.value)}
         />
 
-        {/* 6. Passa as props atualizadas para o Grid */}
         <Grid {...gridProps} />
       </div>
     </>
