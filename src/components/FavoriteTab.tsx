@@ -15,8 +15,8 @@ export default function FavoriteTab(props: TabProps) {
   return (
     <>
       <div className="mt-2 space-y-2">
-        <p className='text-white pt-2 text-4xl xs:text-6xl font-bold text-justify'>Favoritos</p>
-        <Grid {...gridProps} />
+        <p className='text-primary pt-2 text-4xl xs:text-6xl font-bold text-justify'>Favoritos</p>
+        <Grid {...gridProps}/>
       </div>
     </>
   )

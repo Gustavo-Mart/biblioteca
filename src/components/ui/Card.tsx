@@ -26,8 +26,8 @@ export default function Card({ book, onClick, isFavorite, onToggleFavorite }: Ca
       whileHover={{ scale: 1.02 }}
 
       onClick={() => onClick(book)}
-      className="bg-neutral-400 rounded-2xl h-full w-full cursor-pointer
-                       hover:ring-4 ring-blue-500/50 overflow-clip 
+      className="bg-primary rounded-xl h-full w-full cursor-pointer
+                       hover:ring-4 ring-hover-bg/90 overflow-clip 
                        relative group"
     >
       <div className="relative">
@@ -42,7 +42,7 @@ export default function Card({ book, onClick, isFavorite, onToggleFavorite }: Ca
           className={`
                         absolute top-3 right-3 p-2 rounded-full z-10
                         transition-opacity duration-300
-                        ${isFavorite ? 'opacity-100 bg-white/70' : 'opacity-0 group-hover:opacity-100 bg-white/50'}
+                        ${isFavorite ? 'opacity-100 bg-primary/90' : 'opacity-0 group-hover:opacity-100 bg-primary/80'}
                     `}
           aria-label={isFavorite ? "Remover Favorito" : "Adicionar Favorito"}
         >
@@ -54,7 +54,7 @@ export default function Card({ book, onClick, isFavorite, onToggleFavorite }: Ca
         </button>
       </div>
 
-      <p className="py-2 px-4 text-neutral-950 font-semibold text-lg break-words">{book.title}</p>
+      <p className="py-2 px-4 text-secondary font-semibold text-lg break-words">{book.title}</p>
     </motion.div>
   )
 }

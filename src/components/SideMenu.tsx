@@ -1,4 +1,4 @@
-import { SquareStar, Home, type LucideIcon, X, ArrowLeftFromLine, CalendarClock } from "lucide-react"
+import { SquareStar, type LucideIcon, X, CalendarClock, Library, MenuIcon } from "lucide-react"
 import { useState } from "react"
 import type { View } from '../types'
 
@@ -14,10 +14,10 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
     setIsMenuOpen(!isMenuOpen)
   }
 
-  const focusedStyle = 'outline-0 focus:ring-2 focus:ring-blue-500'
+  const focusedStyle = 'outline-0 focus:ring-2 focus:ring-hover-bg focus:ring-offset-2'
+  const hoverStyle = 'font-cutive-mono text-primary hover:text-black hover:bg-bg border-b-2 border-b-primary'
 
   const NavButton = ({ Icon, text, view }: { Icon: LucideIcon, text: string, view: View }) => {
-
     return (
       <button
         onClick={() => {
@@ -25,11 +25,11 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
           setIsMenuOpen(false)
         }}
         className={`
-          flex items-center text-slate-950 hover:bg-neutral-400 w-full rounded-xl bg-neutral-300 transition-all ${focusedStyle}
+          flex items-center justify-between w-full transition-all ${focusedStyle} ${hoverStyle}
         `}
       >
-        <Icon className="size-14 p-1.5 cursor-pointer flex-shrink-0" strokeWidth={1} />
-        <span className='p-2 text-xl font-semibold whitespace-nowrap'>{text}</span>
+        <Icon className="size-14 sm:size-18 p-1.5 cursor-pointer flex-shrink-0" strokeWidth={1.2} />
+        <span className='p-2 text-5xl whitespace-nowrap'>{text}</span>
       </button>
     )
   }
@@ -41,49 +41,37 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
         onClick={toggleMenu}
         className={`
           fixed top-8 right-6 z-50 p-2 flex flex-row items-center
-          bg-neutral-300 text-slate-950 rounded-2xl shadow-lg
+          bg-primary text-slate-950 rounded-2xl shadow-lg
           transition-all duration-300 ease-in-out
-          hover:scale-105 hover:bg-neutral-400
+          hover:scale-105 hover:bg-hover-bg
           ${focusedStyle}
           ${isMenuOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}
         `}
         aria-label="Abrir menu"
       >
-        <ArrowLeftFromLine className="size-8" strokeWidth={1.4} />
-        <span className="pl-1 text-md sm:text-lg">Abrir Menu</span>
+        <MenuIcon className="size-10" strokeWidth={1.4} />
       </button>
-
-      {/* Overlay (Fundo Escuro) */}
-      <div
-        onClick={toggleMenu}
-        className={`
-          fixed inset-0 bg-black/50 z-30
-          transition-opacity duration-300 ease-in-out
-          ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}
-        `}
-      />
 
       {/* Painel do Menu (Slider) */}
       <div
         className={`
-          fixed top-0 right-0 h-screen bg-neutral-200 flex-shrink-0 z-40 py-10 px-2 space-y-2 transition-transform duration-300 ease-in-out w-64
-          ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}
+          fixed inset-0 bg-black/60 backdrop-blur-md z-40 m-auto flex flex-col items-center justify-center transition-opacity duration-300 ease-in-out
+          ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}
         `}
-        onClick={(e) => e.stopPropagation()}
+        onClick={toggleMenu}
       >
-        <button
-          onClick={toggleMenu}
-          className={`
-            flex items-center text-white hover:bg-neutral-300 hover:text-slate-950 bg-neutral-800 w-full rounded-xl transition-all
-            ${focusedStyle}
+        <div className="flex flex-col items-center justify-center space-y-2 gap-2">
+          <button
+            onClick={toggleMenu}
+            className={`
+            flex items-center justify-between w-fit transition-all ${focusedStyle} ${hoverStyle}
           `}
-        >
-          <X className="size-14 p-1.5 rounded-xl cursor-pointer flex-shrink-0" strokeWidth={1} />
-          <span className='p-2 text-xl font-semibold whitespace-nowrap'>Fechar Menu</span>
-        </button>
+          >
+            <X className="size-14 sm:size-18 p-1.5 cursor-pointer flex-shrink-0" strokeWidth={1} />
+            <span className='p-2 text-5xl whitespace-nowrap'>Fechar Menu</span>
+          </button>
 
-        <div className="space-y-2 pt-2">
-          <NavButton Icon={Home} text="Biblioteca" view="Home" />
+          <NavButton Icon={Library} text="Biblioteca" view="Home"/>
           <NavButton Icon={SquareStar} text="Favoritos" view="Favorites" />
           <NavButton Icon={CalendarClock} text="Reservas" view="Account" />
         </div>

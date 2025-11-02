@@ -2,4 +2,11 @@
 
 @theme{
   --breakpoint-xs: 30rem;
+  --font-nunito: 'Nunito', sans-serif;
+  --font-cutive-mono: 'Cutive Mono', monospace;
+
+  --color-primary: #F4F1DE;
+  --color-secondary: #3D405B;
+  --color-hover-bg: #E07A5F;
+  --color-bg: #81B29A;
 }
