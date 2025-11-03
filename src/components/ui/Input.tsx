@@ -1,7 +1,6 @@
 import { Search } from 'lucide-react'
-import React from 'react' // Importa o React para os tipos de evento
+import React from 'react'
 
-// 1. Define as props que o componente vai receber
 interface InputProps {
   value: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -14,7 +13,7 @@ export default function Input_Biblioteca({ value, onChange }: InputProps) {
         <Search strokeWidth={1.4} />
       </div>
       <input
-        className="bg-primary rounded-r-2xl w-fit sm:w-full h-14 text-black py-4 px-2 font-nunito outline-none"
+        className="bg-primary rounded-r-2xl w-full h-14 text-black py-4 px-2 font-momo-trust-display outline-none"
         placeholder='Procure pelo nome do livro'
         value={value}
         onChange={onChange}

@@ -15,7 +15,7 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
   }
 
   const focusedStyle = 'outline-0 focus:ring-2 focus:ring-hover-bg focus:ring-offset-2'
-  const hoverStyle = 'font-cutive-mono text-primary hover:text-black hover:bg-bg border-b-2 border-b-primary'
+  const hoverStyle = 'font-cutive-mono text-primary hover:text-black hover:bg-bg border-b-2 border-b-primary '
 
   const NavButton = ({ Icon, text, view }: { Icon: LucideIcon, text: string, view: View }) => {
     return (
@@ -29,7 +29,7 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
         `}
       >
         <Icon className="size-14 sm:size-18 p-1.5 cursor-pointer flex-shrink-0" strokeWidth={1.2} />
-        <span className='p-2 text-5xl whitespace-nowrap'>{text}</span>
+        <span className='p-2 text-3xl sm:text-5xl whitespace-nowrap'>{text}</span>
       </button>
     )
   }
@@ -40,7 +40,7 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
       <button
         onClick={toggleMenu}
         className={`
-          fixed top-8 right-6 z-50 p-2 flex flex-row items-center
+          fixed top-4 right-4 z-50 p-2 flex flex-row items-center
           bg-primary text-slate-950 rounded-2xl shadow-lg
           transition-all duration-300 ease-in-out
           hover:scale-105 hover:bg-hover-bg
@@ -68,7 +68,7 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
           `}
           >
             <X className="size-14 sm:size-18 p-1.5 cursor-pointer flex-shrink-0" strokeWidth={1} />
-            <span className='p-2 text-5xl whitespace-nowrap'>Fechar Menu</span>
+            <span className='p-2 text-3xl sm:text-5xl whitespace-nowrap'>Fechar Menu</span>
           </button>
 
           <NavButton Icon={Library} text="Biblioteca" view="Home"/>

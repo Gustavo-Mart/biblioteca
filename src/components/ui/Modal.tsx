@@ -27,14 +27,14 @@ export default function Modal_Comp({ children, isOpen, onClose, title, headerAct
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className="bg-secondary rounded-xl shadow-2xl p-4 max-w-2xl w-full max-h-[80vh] overflow-hidden m-10"
+        className="bg-secondary rounded-xl shadow-2xl p-4 max-w-2xl w-full max-h-[80vh] overflow-x-hidden m-4"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center border-b border-hover-bg pb-3 mb-4">
           <div className="flex items-center gap-4">
             <h3
               id="modal-title"
-              className="text-2xl font-semibold text-primary"
+              className="text-2xl text-primary"
             >
               {title}
             </h3>

@@ -54,7 +54,7 @@ export default function Card({ book, onClick, isFavorite, onToggleFavorite }: Ca
         </button>
       </div>
 
-      <p className="py-2 px-4 text-secondary font-semibold text-lg break-words">{book.title}</p>
+      <p className="py-2 px-4 text-secondary font-momo-trust-sans font-regular text-md xs:text-lg break-words">{book.title}</p>
     </motion.div>
   )
 }

@@ -141,7 +141,7 @@ function App() {
 
   return (
     <>
-      <div className='flex font-nunito bg-bg w-screen h-screen'>
+      <div className='flex font-momo-trust-display bg-bg w-screen h-screen'>
         <Menu_lat
           onViewChange={handleChangeView}
           currentView={currentView}
@@ -178,16 +178,16 @@ function App() {
               <img
                 src={selectedBook.imageUrl}
                 alt={`Capa do Livro: ${selectedBook.title}`}
-                className="w-32 md:w-full rounded-xl object-cover self-start"
+                className="w-32 md:w-full max-w-48 rounded-xl object-cover self-start"
               />
               <div className="flex flex-col flex-grow gap-2">
                 <p className='text-bg text-lg'>Autor: {selectedBook.author}</p>
-                <p className='text-primary text-md'>{selectedBook.description}</p>
+                <p className='text-primary text-md font-momo-trust-sans'>{selectedBook.description}</p>
               </div>
             </div>
           )}
 
-          <div className=" justify-evenly gap-2 mt-4 flex flex-col md:flex-row md:justify-end items-center border-t border-neutral-600 p-4">
+          <div className=" justify-evenly gap-2 mt-4 flex flex-col md:flex-row md:justify-end items-center border-t border-hover-bg p-4">
             {selectedBook && !isSelectedBookReserved && (
               <button
                 onClick={() => handleReserveBook(selectedBook.id)}

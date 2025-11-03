@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap'); /* Primary font */
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap'); /* For the SideMenu */
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap'); /* For headings */
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap'); /* For body text */
 @import "tailwindcss";
 
 :root {
@@ -14,6 +16,15 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --color-primary: #F4F1DE;
+  --color-secondary: #3D405B;
+  --color-hover-bg: #E07A5F;
+  --color-bg: #81B29A;
+}
+
+::selection {
+  background-color: var(--color-hover-bg);
+  color: var(--color-secondary);
 }
 
 body {

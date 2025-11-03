@@ -4,7 +4,7 @@ export const BOOKS_DATA: BookDetails[] = [
     {
       id: 1,
       title: 'Design de Interação - Além da Interação Humano-Computador',
-      author: 'Autor Desconhecido',
+      author: 'Gustavo',
       imageUrl: "/assets/design_interacao.png",
       description: 'Estudo aprofundado sobre os princípios e práticas de design de interação, essencial para projetar sistemas intuitivos.',
     },
@@ -53,7 +53,7 @@ export const BOOKS_DATA: BookDetails[] = [
     {
       id: 8,
       title: 'Ciência da Computação - Uma Visão Abrangente',
-      author: 'Autor Desconhecido',
+      author: 'Milena',
       imageUrl: '/assets/ciencia_comp.png',
       description: 'Panorama completo dos principais temas e áreas de estudo em ciência da computação.',
     },
