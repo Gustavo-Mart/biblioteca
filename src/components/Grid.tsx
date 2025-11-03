@@ -14,10 +14,9 @@ export default function Grid({
 }: GridProps) {
 
   return (
-    <div className="w-full h-fit bg-neutral-300/10 rounded-2xl p-6">
-      <h2 className='text-white text-3xl'>Livros: </h2>
-
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6">
+    <div className="w-full h-fit bg-secondary/30 rounded-2xl p-4">
+      <h2 className='text-primary text-3xl'>Livros: </h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4 mt-6">
         <AnimatePresence>
           {books.map(book => (
             <Card

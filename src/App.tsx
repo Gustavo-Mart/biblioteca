@@ -112,7 +112,7 @@ function App() {
       onClick={() => handleToggleFavorite(selectedBook.id)}
       className={`
                 flex justify-center p-2 rounded-lg font-medium transition-all w-full
-                ${isSelectedBookFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-neutral-700 hover:bg-red-500'}
+                ${isSelectedBookFavorite ? 'bg-red-500 hover:bg-red-600' : 'bg-bg hover:bg-red-500'}
             `}
       aria-label={isSelectedBookFavorite ? "Remover Favorito" : "Favoritar Livro"}
     >
@@ -141,13 +141,13 @@ function App() {
 
   return (
     <>
-      <div className='flex font-nunito bg-blue-950 w-screen h-screen'>
+      <div className='flex font-momo-trust-display bg-bg w-screen h-screen'>
         <Menu_lat
           onViewChange={handleChangeView}
           currentView={currentView}
         />
 
-        <div className="flex-grow flow-root p-6 overflow-y-auto">
+        <div className="flex-grow flow-root p-4 md:p-6 overflow-y-auto">
           {currentView === 'Home' ? (
             <SearchTab
               books={BOOKS_DATA}
@@ -174,24 +174,24 @@ function App() {
           title={selectedBook ? selectedBook.title : "Detalhes do Livro"}
         >
           {selectedBook && (
-            <div className='text-white flex flex-row space-x-6 px-4'>
+            <div className='text-primary flex flex-row space-x-4'>
               <img
                 src={selectedBook.imageUrl}
                 alt={`Capa do Livro: ${selectedBook.title}`}
-                className="w-32 md:w-full rounded-xl object-cover self-start"
+                className="w-32 md:w-full max-w-48 rounded-xl object-cover self-start"
               />
-              <div className="flex flex-col flex-grow">
-                <p className='text-neutral-200 mb-2'>Autor: {selectedBook.author}</p>
-                <p className='text-neutral-300 flex-grow'>{selectedBook.description}</p>
+              <div className="flex flex-col flex-grow gap-2">
+                <p className='text-bg text-lg'>Autor: {selectedBook.author}</p>
+                <p className='text-primary text-md font-momo-trust-sans'>{selectedBook.description}</p>
               </div>
             </div>
           )}
 
-          <div className=" justify-evenly gap-2 mt-4 flex flex-col md:flex-row md:justify-end items-center border-t border-neutral-600 p-4">
+          <div className=" justify-evenly gap-2 mt-4 flex flex-col md:flex-row md:justify-end items-center border-t border-hover-bg p-4">
             {selectedBook && !isSelectedBookReserved && (
               <button
                 onClick={() => handleReserveBook(selectedBook.id)}
-                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition h-full w-full"
+                className="bg-hover-bg text-primary px-4 py-2 rounded-lg hover:bg-bg transition h-full w-full"
               >
                 Reservar por 1 semana
               </button>
@@ -201,13 +201,7 @@ function App() {
                 Reservado até: {reservedBooks.get(selectedBook.id)?.toLocaleDateString()}
               </span>
             )}
-            {favoriteButton}
-            <button
-              onClick={closeModal}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition w-full h-full"
-            >
-              Fechar
-            </button>
+            {favoriteButton}            
           </div>
         </Modal_Comp>
       </div>
