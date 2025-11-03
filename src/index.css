@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap'); /* Primary font */
 @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap'); /* For the SideMenu */
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap'); /* For headings */
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap'); /* For body text */
 @import "tailwindcss";
 
 :root {
-  font-family: "Nunito", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 

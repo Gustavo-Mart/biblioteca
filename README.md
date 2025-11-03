@@ -1,128 +1,178 @@
-# Biblioteca
+# 📚 Biblioteca
 
-A modern and interactive library interface built with React, TypeScript, and Tailwind CSS.
+Uma interface moderna e interativa de biblioteca construída com React, TypeScript e Tailwind CSS, permitindo aos usuários pesquisar, favoritar e reservar livros.
 
-## Key Features & Benefits
+![Biblioteca Preview](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3+-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 
-- **Interactive User Interface:** Engaging and intuitive library experience.
-- **Modern Technologies:** Leverages React, TypeScript, and Tailwind CSS for performance and maintainability.
-- **Customizable Design:** Tailwind CSS allows for easy customization and styling.
-- **Scalable Architecture:** React component-based architecture supports future expansion.
+## ✨ Funcionalidades
 
-## Prerequisites & Dependencies
+### 🔍 Pesquisa de Livros
+- Busca em tempo real por título ou autor
+- Interface intuitiva com filtros dinâmicos
+- Grid responsivo que se adapta a diferentes tamanhos de tela
 
-Before you begin, ensure you have the following installed:
+### ❤️ Sistema de Favoritos
+- Adicione e remova livros dos seus favoritos
+- Visualize todos os livros favoritos em uma aba dedicada
+- Persistência de dados usando localStorage
+- Animações suaves com Framer Motion
 
-- **Node.js:** (Version >= 18) - JavaScript runtime environment.
-- **npm:** (Usually bundled with Node.js) or **Yarn:** Package manager for JavaScript.
+### 📅 Sistema de Reservas
+- Reserve livros por 1 semana
+- Acompanhe a data de devolução
+- Gerencie suas reservas ativas
+- Devolva livros com um clique
 
-## Installation & Setup Instructions
+### 🎨 Interface Moderna
+- Design responsivo e mobile-first
+- Menu lateral com animações fluidas
+- Modal detalhado para informações do livro
+- Tema de cores personalizado e harmonioso
+- Transições e animações suaves
 
-Follow these steps to get the project up and running:
+## 🚀 Tecnologias Utilizadas
 
-1.  **Clone the repository:**
+- **React 18+** - Biblioteca JavaScript para construção de interfaces
+- **TypeScript** - Superset do JavaScript com tipagem estática
+- **Tailwind CSS** - Framework CSS utilitário para estilização
+- **Vite** - Build tool rápido e moderno
+- **Framer Motion** - Biblioteca de animações para React
+- **Lucide React** - Ícones modernos e customizáveis
 
-    ```bash
-    git clone https://github.com/Gustavo-Mart/biblioteca.git
-    cd biblioteca
-    ```
+## 📋 Pré-requisitos
 
-2.  **Install dependencies:**
+Antes de começar, certifique-se de ter instalado:
 
-    Using npm:
+- **Node.js** (versão 18 ou superior)
+- **npm** ou **yarn** (gerenciador de pacotes)
 
-    ```bash
-    npm install
-    ```
+## 🔧 Instalação
 
-    or using yarn:
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/Gustavo-Mart/biblioteca.git
+   cd biblioteca
+   ```
 
-    ```bash
-    yarn install
-    ```
+2. **Instale as dependências:**
+   
+   Usando npm:
+   ```bash
+   npm install
+   ```
+   
+   Ou usando yarn:
+   ```bash
+   yarn install
+   ```
 
-3.  **Start the development server:**
+3. **Inicie o servidor de desenvolvimento:**
+   
+   Usando npm:
+   ```bash
+   npm run dev
+   ```
+   
+   Ou usando yarn:
+   ```bash
+   yarn dev
+   ```
 
-    Using npm:
+4. **Acesse a aplicação:**
+   
+   Abra seu navegador e acesse: `http://localhost:5173`
 
-    ```bash
-    npm run dev
-    ```
-
-    or using yarn:
-
-    ```bash
-    yarn dev
-    ```
-
-    This will start the Vite development server.  You can access the application in your browser at the address provided in the console (usually `http://localhost:5173`).
-
-## Project Structure
+## 📁 Estrutura do Projeto
 
 ```
-├── .gitignore                  // Specifies intentionally untracked files that Git should ignore.
-├── README.md                   // This file.
-├── components.json             // Configuration file for UI component libraries
-├── eslint.config.js            // Configuration file for ESLint (JavaScript linter).
-├── index.html                  // Main HTML file.
-├── package-lock.json           // Records the exact versions of dependencies used in the project (npm).
-├── package.json                // Contains metadata about the project and its dependencies.
-└── public/                     // Static assets like images, fonts, etc.
-└── assets/                     // More specific assets used by the application.
-    ├── armazenamento.png       // Sample Asset Image.
-    ├── ciencia_comp.png       // Sample Asset Image.
-    ├── conceitos-java.png       // Sample Asset Image.
-    ├── conceitos_lp.png       // Sample Asset Image.
-    ├── design_interacao.png       // Sample Asset Image.
-    ├── fundamentos_python.png       // Sample Asset Image.
-    ├── fundamentos_si.png       // Sample Asset Image.
-    ├── interface_hc.png       // Sample Asset Image.
-    ├── matematica_aplicada.png   // Sample Asset Image.
-    ├── redes.png               // Sample Asset Image.
-    ├── refatora_html.png        // Sample Asset Image.
-└── src/                       // Source Code Directory
-    ├── App.css               // Main CSS File
+biblioteca/
+├── public/                      # Arquivos estáticos
+│   └── assets/                  # Imagens das capas dos livros
+│       ├── design_interacao.png
+│       ├── interface_hc.png
+│       └── ...
+├── src/
+│   ├── components/              # Componentes React
+│   │   ├── ui/                  # Componentes UI reutilizáveis
+│   │   │   ├── Card.tsx         # Card de livro
+│   │   │   ├── Input.tsx        # Input de pesquisa
+│   │   │   └── Modal.tsx        # Modal de detalhes
+│   │   ├── AccountTab.tsx       # Aba de reservas
+│   │   ├── FavoriteTab.tsx      # Aba de favoritos
+│   │   ├── Grid.tsx             # Grid de livros
+│   │   ├── SearchTab.tsx        # Aba de pesquisa
+│   │   └── SideMenu.tsx         # Menu lateral
+│   ├── App.tsx                  # Componente principal
+│   ├── App.css                  # Estilos e tema
+│   ├── data.ts                  # Dados dos livros
+│   ├── types.ts                 # Definições TypeScript
+│   ├── index.css                # Estilos globais
+│   └── main.tsx                 # Ponto de entrada
+├── index.html                   # HTML principal
+├── package.json                 # Dependências do projeto
+├── tailwind.config.js           # Configuração do Tailwind
+├── tsconfig.json                # Configuração do TypeScript
+└── vite.config.ts               # Configuração do Vite
 ```
 
-## Usage Examples
+## 🎯 Como Usar
 
-The library utilizes React components and can be extended with new features. Here are some basic usage examples:
+### Navegação
+- Use o **menu hamburguer** no canto superior direito para navegar entre as abas
+- **Biblioteca**: Visualize e pesquise todos os livros disponíveis
+- **Favoritos**: Acesse seus livros favoritos
+- **Reservas**: Gerencie suas reservas ativas
 
-```typescript
-// Example of a React component (inside src directory):
-import React from 'react';
+### Pesquisar Livros
+1. Na aba "Biblioteca", use a barra de pesquisa
+2. Digite o nome do livro ou autor
+3. Os resultados são filtrados automaticamente
 
-function MyComponent() {
-  return (
-    <div>
-      <h1>Hello from MyComponent!</h1>
-    </div>
-  );
-}
+### Favoritar Livros
+1. Passe o mouse sobre um livro ou clique nele
+2. Clique no ícone de coração ❤️
+3. O livro será adicionado aos favoritos
 
-export default MyComponent;
-```
+### Reservar Livros
+1. Clique em um livro para ver detalhes
+2. Clique em "Reservar por 1 semana"
+3. O livro aparecerá na aba "Reservas"
+4. A data de devolução é automaticamente calculada
 
-## Configuration Options
+### Devolver Livros
+1. Acesse a aba "Reservas"
+2. Clique em "Devolver Livro"
+3. O livro será removido das suas reservas
 
-The project utilizes Tailwind CSS for styling. You can customize the design by modifying the `tailwind.config.js` file.
+## 🤝 Contribuindo
 
-## Contributing Guidelines
+Contribuições são bem-vindas! Para contribuir:
 
-We welcome contributions! If you'd like to contribute, please follow these guidelines:
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/NovaFuncionalidade`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
+5. Abra um Pull Request
 
-1.  Fork the repository.
-2.  Create a new branch for your feature or bug fix.
-3.  Make your changes and ensure they are well-tested.
-4.  Submit a pull request with a clear description of your changes.
+## 📝 Licença
 
-## License Information
+Este projeto não possui licença definida. Todos os direitos reservados.
 
-This project does not currently have a license. All rights are reserved.
+## 👥 Autores
 
-## Acknowledgments
+- **Gustavo Mart** - [GitHub](https://github.com/Gustavo-Mart)
 
--   [React](https://react.dev/)
--   [TypeScript](https://www.typescriptlang.org/)
--   [Tailwind CSS](https://tailwindcss.com/)
--   [Vite](https://vitejs.dev/)
+## 🙏 Agradecimentos
+
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Lucide Icons](https://lucide.dev/)
+
+---
+
+⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
