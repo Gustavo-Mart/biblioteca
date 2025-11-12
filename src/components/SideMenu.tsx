@@ -49,7 +49,7 @@ export default function SideMenu({ onViewChange }: MenuLatProps) {
         `}
         aria-label="Abrir menu"
       >
-        <MenuIcon className="size-10" strokeWidth={1.4} />
+        <MenuIcon className="size-12" strokeWidth={1.4} />
       </button>
 
       {/* Painel do Menu (Slider) */}

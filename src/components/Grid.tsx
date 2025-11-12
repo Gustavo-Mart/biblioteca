@@ -1,6 +1,6 @@
 import type { BookDetails, GridControlProps } from '../types'
 import Card from "./ui/Card"
-import { AnimatePresence } from 'framer-motion' // 1. Importar AnimatePresence
+import { AnimatePresence } from 'framer-motion'
 
 interface GridProps extends GridControlProps {
   books: BookDetails[]
